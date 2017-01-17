@@ -1,0 +1,46 @@
+{:hook('body_start')}
+<header class="header">
+	<div class="container">
+		<h1 class="logo"><a href="__ROOT__/" title="{$site_name}">{$site_name}</a></h1>
+		<div class="brand">{$site_name}<br>www.kuwuya.com</div>
+
+		<?php
+			$effected_id="main-menu";
+		  	$filetpl="<a href='\$href' target='\$target'><b class='\$icon'></b> \$label</a>";
+		  	$foldertpl="<a href='\$href' target='\$target'>\$label <b class='fa fa-angle-down'></b></a>";
+		  	$ul_class="sub-menu" ;
+		  	$li_class="li-class" ;
+		  	$style="site-nav site-navbar";
+		  	$showlevel=3;
+		  	$dropdown='';
+		  	echo sp_get_menu("main",$effected_id,$filetpl,$foldertpl,$ul_class,$li_class,$style,$showlevel,$dropdown);
+		?>
+		
+		<div class="topbar">
+		<?php
+			$oldnav =  sp_get_menu_tree('2');  //副导航
+		?>
+			<ul class="site-nav topmenu">
+				<volist name="oldnav" id="vo">
+					<li>
+						<a href="{$vo['href']}" target="{$vo['target']}"><i class="{$vo['icon']}"></i> {$vo['label']}</a>
+						<neq name="vo['child']|count" value='0'>
+							<ul class="sub-menu">
+								<volist name="vo['child']" id="co">
+									<li><a target="{$co['target']}" href="{$co['href']}"><i class="{$co['icon']}"></i> {$co['label']}</a></li>
+								</volist>
+							</ul>
+						</neq>
+					</li>
+				</volist>
+			</ul>
+		</div>
+	</div>
+</header>
+<div class="site-search">
+	<div class="container">
+		<form method="get" class="site-search-form" action="http://www.daqianduan.com/" >
+			<input class="search-input" name="s" type="text" placeholder="输入关键字搜索"><button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+		</form>
+	</div>
+</div>

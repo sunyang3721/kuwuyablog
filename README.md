@@ -1,2 +1,1 @@
-# kuwuyablog
-thinkcmf 2.0
+## 为你开放更多

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{$post_title} {$site_name}</title>
+	<meta name="keywords" content="{$post_keywords}" />
+	<meta name="description" content="{$post_excerpt}">
+	<tc_include file="Public:head" />
+</head>
+<body class="single single-post postid-73 single-format-standard nav_fixed p_indent comment-open site-layout-2">
+<tc_include file="Public:nav" />
+
+<section class="container">
+	<div class="content-wrap">
+		<div class="content">
+			<header class="article-header">
+				<h1 class="article-title"><a href="#">{$post_title}</a></h1>
+				<div class="article-meta">
+					<span class="item">{$post_modified}</span>
+					<span class="item">来源：{$post_source|default="$site_name"}</span><span class="item">分类： <a href="#" rel="category tag">{:sp_get_term($term_id)['name']}</a></span>
+					<span class="item post-views">阅读({$post_hits})</span><span class="item">评论(xxx)</span>
+					<span class="item"></span>
+				</div>
+			</header>
+			<article class="article-content">{$post_content}</article>
+			<div class="post-copyright">
+				转载请注明出处 洋葱技术博客：{$post_title} 
+			</div>
+			<div class="action-share bdsharebuttonbox">
+				<span style="position:relative;bottom:6px;">分享到：</span>
+				<a class="bds_qzone" data-cmd="qzone"></a>
+				<a class="bds_tsina" data-cmd="tsina"></a>
+				<a class="bds_weixin" data-cmd="weixin"></a>
+				<a class="bds_tqq" data-cmd="tqq"></a>
+				<a class="bds_sqq" data-cmd="sqq"></a>
+				<a class="bds_bdhome" data-cmd="bdhome"></a>
+				<a class="bds_tqf" data-cmd="tqf"></a>
+				<a class="bds_renren" data-cmd="renren"></a>
+				<a class="bds_diandian" data-cmd="diandian"></a>
+				<a class="bds_youdao" data-cmd="youdao"></a>
+				<a class="bds_ty" data-cmd="ty"></a>
+				<a class="bds_kaixin001" data-cmd="kaixin001"></a>
+				<a class="bds_taobao" data-cmd="taobao"></a>
+				<a class="bds_douban" data-cmd="douban"></a>
+				<a class="bds_fbook" data-cmd="fbook"></a>
+				<a class="bds_twi" data-cmd="twi"></a>
+				<a class="bds_mail" data-cmd="mail"></a>
+				<a class="bds_copy" data-cmd="copy"></a>
+			</div>
+			<div class="article-tags">
+				<a href="#" rel="tag" data-toggle="tooltip" data-placement="top" title="ssssss">下一篇</a>
+				<a href="#" rel="tag" data-toggle="tooltip" data-placement="top" title="撒犯得上发射点">上一篇</a>
+			</div>
+			<div class="clear" style="clear:both"></div>
+			<div class="relates">
+				<div class="title">
+					<h3>相关推荐</h3>
+				</div>
+				<ul>
+					<li><a href="#">这是一篇测试&amp;视频页面</a></li>
+					<li><a href="#">云适配获千万美金B轮融资，将开发移动端企业安全浏览器</a></li>
+					<li><a href="#">辛苦创业赚的钱不受银行待见，于是我们做了“企业活期宝”</a></li>
+					<li><a href="#">程维发布股东公开信，确认滴滴快的正在进行15亿美元以上的融资</a></li>
+					<li><a href="#">未来一年，中国的移动支付市场会是什么样？</a></li>
+					<li><a href="#">三星也玩概念 Win10柔性屏平板曝光</a></li>
+					<li><a href="#">除了做智能手机 谷歌还开发了个智能手机壳</a></li>
+					<li><a href="#">ORB潜水头盔 回收自己氧气在水下呼吸</a></li>
+				</ul>
+			</div>
+			<!--PC和WAP自适应版-->
+			<div id="SOHUCS" sid="{$id}" ></div> 
+			<script type="text/javascript"> 
+			(function(){ 
+			var appid = 'cyr7zDFAB'; 
+			var conf = 'prod_d7524e44b42e52a688f6b5cc14bb3006'; 
+			var width = window.innerWidth || document.documentElement.clientWidth; 
+			if (width < 960) { 
+			window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); 
+			</script>
+		</div>
+	</div>
+	
+	<aside class="sidebar">
+		{:sp_getad("ad_right_1")}
+		{:sp_getad("ad_right_2")}
+		{:sp_getad("ad_right_3")}
+		{:sp_getad("ad_right_4")}
+		{:sp_getad("ad_right_5")}
+		{:sp_getad("ad_right_6")}
+		{:sp_getad("ad_right_7")}
+		{:sp_getad("ad_right_8")}
+		<div class="widget widget_ui_posts">
+			<h3>热门文章</h3>
+			<ul>
+				<li><a href="#"><span class="thumbnail"><img data-src="http://www.daqianduan.com/wp-content/uploads/2016/08/MobvistaLOGO.jpg" class="thumb" src="http://www.daqianduan.com/wp-content/uploads/2016/08/MobvistaLOGO.jpg" style="display: block;"></span><span class="text">Mobvista-汇量科技招聘前端H5工程师（北京 20K+）</span><span class="muted">2016-08-22</span><span class="muted">评论()</span></a></li>
+				<li><a href="#"><span class="thumbnail"><img data-src="http://www.daqianduan.com/wp-content/uploads/2016/08/qxwzLOGO.jpg" class="thumb" src="http://www.daqianduan.com/wp-content/uploads/2016/08/qxwzLOGO.jpg" style="display: block;"></span><span class="text">阿里-千寻招聘资深前端（上海）</span><span class="muted">2016-08-22</span><span class="muted">评论()</span></a></li>
+				<li><a href="#"><span class="thumbnail"><img data-src="http://www.daqianduan.com/wp-content/uploads/2016/08/sohu_220150.png" class="thumb" src="http://www.daqianduan.com/wp-content/uploads/2016/08/sohu_220150.png" style="display: block;"></span><span class="text">搜狐社交产品中心-中级web前端开发工程师（北京 14K+）</span><span class="muted">2016-08-22</span><span class="muted">评论()</span></a></li>
+				<li><a href="#"><span class="thumbnail"><img data-src="http://www.daqianduan.com/wp-content/uploads/2016/04/zhenai.png" class="thumb" src="http://www.daqianduan.com/wp-content/uploads/2016/04/zhenai.png" style="display: block;"></span><span class="text">珍爱网诚聘高级前端开发工程师（深圳 10K+）</span><span class="muted">2016-04-20</span><span class="muted">评论()</span></a></li>
+				<li><a href="#"><span class="thumbnail"><img data-src="http://www.daqianduan.com/wp-content/uploads/2016/04/boxiaole.png" class="thumb" src="http://www.daqianduan.com/wp-content/uploads/2016/04/boxiaole.png" style="display: block;"></span><span class="text">58赶集集团招聘前端开发工程师 （北京 15K+）</span><span class="muted">2016-04-12</span><span class="muted">评论()</span></a></li>
+				<li><a href="#"><span class="thumbnail"><img data-src="http://www.daqianduan.com/wp-content/uploads/2015/09/ll.jpg" class="thumb" src="http://www.daqianduan.com/wp-content/uploads/2015/09/ll.jpg" style="display: block;"></span><span class="text">郑州珑凌科技有限公司招聘高级前端开发工程师</span><span class="muted">2016-03-25</span><span class="muted">评论()</span></a></li>
+			</ul>
+		</div>
+		<div class="widget widget_ui_comments">
+			<h3>热门评论</h3>
+				<ul>
+					<li><a href="#" title="云适配获千万美金B轮融资，将开发移动端企业安全浏览器上的评论"><img alt="" data-src="http://1.gravatar.com/avatar/1dadfd2aa6b8d371320dd268678c1d29?s=50&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g" srcset="http://1.gravatar.com/avatar/1dadfd2aa6b8d371320dd268678c1d29?s=100&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g 2x" class="avatar avatar-50 photo" height="50" width="50" src="http://1.gravatar.com/avatar/1dadfd2aa6b8d371320dd268678c1d29?s=50&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g" style="display: block;"><strong>欧美大图吧</strong> 1年前 (2015-07-22)说：<br>
+					很是牛比导航啊。。</a></li>
+					<li><a href="#" title="传苹果正在开发自家的触摸显示集成技术，未来iPhone将取消Home键上的评论"><img alt="" data-src="http://0.gravatar.com/avatar/cfeada5dd78f994c22efc8cac89b8e06?s=50&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g" srcset="http://0.gravatar.com/avatar/cfeada5dd78f994c22efc8cac89b8e06?s=100&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g 2x" class="avatar avatar-50 photo" height="50" width="50" src="http://0.gravatar.com/avatar/cfeada5dd78f994c22efc8cac89b8e06?s=50&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g" style="display: block;"><strong>游客123213</strong> 1年前 (2015-07-19)说：<br>
+					好像很厉害的样子</a></li>
+					<li><a href="#" title="明年90万买个喷气背包，土豪们冲上云霄！上的评论"><img alt="" data-src="http://2.gravatar.com/avatar/2ab9246b017c75d37ebf44a483f93f23?s=50&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g" srcset="http://2.gravatar.com/avatar/2ab9246b017c75d37ebf44a483f93f23?s=100&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g 2x" class="avatar avatar-50 photo" height="50" width="50" src="http://2.gravatar.com/avatar/2ab9246b017c75d37ebf44a483f93f23?s=50&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g" style="display: block;"><strong>nickname</strong> 1年前 (2015-07-10)说：<br>
+					土豪的玩具，哈哈</a></li>
+					<li><a href="#" title="亚马逊对用户评论系统做出重大更新，引入机器学习平台上的评论"><img alt="" data-src="http://0.gravatar.com/avatar/?s=50&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g" srcset="http://0.gravatar.com/avatar/?s=100&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g 2x" class="avatar avatar-50 photo avatar-default" height="50" width="50" src="http://0.gravatar.com/avatar/?s=50&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g" style="display: block;"><strong>WordPress先生</strong> 2年前 (2015-06-26)说：<br>
+					您好，这是一条评论。
+			要删除评论，请先登录，然后再查看这篇文章的评论。登录后您可以看到编辑或者删除评论的选项。
+					</a></li>
+			</ul>
+		</div>
+	</aside>
+</section>
+
+{:sp_getad('home_footer')}
+<tc_include file="Public:footer"/>
+<tc_include file="Public:scripts"/>
+{:hook('footer_end')}
+</body>
+<script type="text/javascript">
+	//上一篇 下一篇 提示
+	require(['bootstrap'], function (){
+		$(function () { $("[data-toggle='tooltip']").tooltip(); });
+	})
+</script>
+</html>

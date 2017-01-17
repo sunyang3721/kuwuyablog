@@ -1,0 +1,35 @@
+{:hook('footer')}
+<style type="text/css">
+	.footer-logo{font-size: 18px;}
+	.footer-navs a, .footer-links a{
+		display: inline-block;
+    	margin: 0 10px;
+	}
+</style>
+<footer class="footer">
+    <div class="container">
+        <p class="footer-logo">
+            <i class="fa">{$site_name}</i>
+        </p>
+        <?php
+			$fooenav =  sp_get_menu_tree('3');  //底部导航
+		?>
+        <p class="footer-navs">
+			<volist name="fooenav" id="vo">
+				<a href="{$vo['href']}" target="{$vo['target']}"><i class="{$vo['icon']}"></i> {$vo['label']}</a>
+			</volist>
+        </p>
+        <!-- <p class="footer-links">
+            <a target="_blank" href="http://www.daqianduan.com">大前端</a>
+            <a target="_blank" href="http://themebetter.com">WordPress主题</a>
+            <a target="_blank" href="http://themebetter.com">WordPress中文主题</a>
+            <a target="_blank" href="http://themebetter.com/course">WordPress教程</a>
+            <a target="_blank" href="http://themebetter.com/blogs">博客导航</a>
+            <a target="_blank" href="#">推荐云服务器</a>
+         </p> -->
+        <p class="footer-copyright">
+            © 2016 <a href="#">ICP232343234</a>
+        </p>
+    </div>
+</footer>
+{$site_tongji}
