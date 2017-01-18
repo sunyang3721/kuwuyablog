@@ -60,4 +60,13 @@ require.config({
 require(['jquery'], function (){
 	//开发完成最后再补充
 	// require(['main'])
+	$('#main-menu').append('<li class="navto-search"><a href="javascript:;" class="search-show active"><i class="fa fa-search"></i></a></li>');  //导航右侧补充搜索
+		$('.navto-search').click(function(){
+			if($('.site-search').hasClass('active')){
+					$('.site-search').removeClass('active').css('top','0px');
+			}else{
+					$('.site-search').addClass('active').css('top','105px');
+			}
+		})
+	
 })
