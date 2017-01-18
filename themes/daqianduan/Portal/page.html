@@ -54,7 +54,7 @@
 				<if condition="empty($smeta['thumb'])"> 
 					<article class="excerpt excerpt-1 excerpt-text">
 						<header>
-							<a class="cat" href="{:leuu('list/index',array('id'=>$vo['term_id']))}">{:sp_get_term($vo['term_id'])['name']}<i></i></a> 
+							<a class="cat" href="#">{:sp_get_term($vo['term_id'])['name']}<i></i></a> 
 							<h2>
 								<a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" title="{$vo['post_title']}"><eq name="vo['recommended']" value="1"><b class="red">[推荐]</b></eq> {$vo['post_title']}</a>
 							</h2>
@@ -72,7 +72,7 @@
 							<img data-src="{:sp_get_asset_upload_path($smeta['thumb'])}" class="thumb"/>
 						</a>
 						<header>
-							<a class="cat" href="{:leuu('list/index',array('id'=>$vo['term_id']))}">{:sp_get_term($vo['term_id'])['name']}<i></i></a> 
+							<a class="cat" href="#">{:sp_get_term($vo['term_id'])['name']}<i></i></a> 
 							<h2>
 								<a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" title="{$vo['post_title']}"><eq name="vo['recommended']" value="1"><b class="red">[推荐]</b></eq> {$vo['post_title']}</a>
 							</h2>

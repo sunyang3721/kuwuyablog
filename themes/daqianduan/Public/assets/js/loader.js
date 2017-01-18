@@ -68,5 +68,5 @@ require(['jquery'], function (){
 					$('.site-search').addClass('active').css('top','105px');
 			}
 		})
-	
+	$("pre").addClass("prettyprint linenums");
 })
