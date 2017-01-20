@@ -47,7 +47,7 @@
 				</ul>
 			</div>
 			<php>
-				$list_all=sp_sql_posts_paged("field:post_title,post_hits,post_like,post_modified,recommended,post_excerpt,object_id,smeta,term_id;order:post_modified desc;",5); 
+				$list_all=sp_sql_posts_paged("field:post_title,post_hits,post_like,post_modified,recommended,post_excerpt,object_id,smeta,term_id;order:istop desc,post_modified desc;",5); 
 			</php>
 			<foreach name="list_all['posts']" item="vo">
 				<php>$smeta=json_decode($vo['smeta'],true);</php>

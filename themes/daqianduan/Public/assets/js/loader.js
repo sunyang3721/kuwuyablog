@@ -40,19 +40,19 @@ require.config({
 	baseUrl: jsui.uri + '/js',
 	urlArgs: 'ver=' + jsui.ver,
 	paths: {
-		 'jquery'        : 'libs/jquery.min',
+		 'jquery'        : '//cdn.bootcss.com/jquery/1.9.1/jquery.min',
 		// 'bootstrap'     : 'libs/bootstrap.min',
 		'bootstrap'     : 'http://apps.bdimg.com/libs/bootstrap/3.2.0/js/bootstrap.min',
 		
-		'jquery.cookie' : 'libs/jquery.cookie.min',
-		'jquery.form' : 'libs/jquery.form',
-		'jsrender'      : 'libs/jsrender.min',
-		'router'        : 'libs/router.min',
-		'lazyload'      : 'libs/lazyload.min',
-		'prettyprint'   : 'libs/prettyprint',
+		// 'jquery.cookie' : 'libs/jquery.cookie.min',
+		// 'jquery.form' : 'libs/jquery.form',
+		// 'jsrender'      : 'libs/jsrender.min',
+		// 'router'        : 'libs/router.min',
+		'lazyload'      : 'lazyload.min',
+		'prettyprint'   : 'prettyprint',
 		//'main'          : 'main',
-		'theme'         : 'theme',
-		'user'          : 'user'
+		// 'theme'         : 'theme',
+		// 'user'          : 'user'
 
 	}
 })
