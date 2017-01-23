@@ -48,6 +48,7 @@ require.config({
 		// 'jquery.form' : 'libs/jquery.form',
 		// 'jsrender'      : 'libs/jsrender.min',
 		// 'router'        : 'libs/router.min',
+		'cookie'		: 'jquery.cookie',
 		'lazyload'      : 'lazyload.min',
 		'prettyprint'   : 'prettyprint',
 		//'main'          : 'main',
@@ -69,4 +70,11 @@ require(['jquery'], function (){
 			}
 		})
 	$("pre").addClass("prettyprint linenums");
+	// require(['cookie'],function(){
+	// 	$.cookie('name',null);
+	// 	$.cookie('ssss',null);
+	// 	$.cookie('seww','2r2r2');
+	// 	var k = $.cookie('ssss');
+	// 	console.log(k);
+	// })
 })

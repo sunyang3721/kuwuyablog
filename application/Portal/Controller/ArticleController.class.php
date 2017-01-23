@@ -75,6 +75,8 @@ class ArticleController extends HomebaseController {
     	$this->assign("term",$term);
     	$this->assign("article_id",$article_id);
     	
+        //相关关联列表
+        $relist = $this->related($article['post_title']);
     	$tplname=$term["one_tpl"];
     	$tplname=empty($smeta['template'])?$tplname:$smeta['template'];
     	$tplname=sp_get_apphome_tpl($tplname, "article");
@@ -82,6 +84,30 @@ class ArticleController extends HomebaseController {
     	$this->display(":$tplname");
     }
     
+    //相关文章列表
+    private function related($keyword){
+        $trword = trim($keyword);
+        $tag = "field:object_id,term_id,status,post_title,listorder,post_modified,istop,post_status;order:istop DESC,listorder ASC,post_modified DESC;";
+        $where['status'] = 1;
+        $where['post_status'] = 1;
+        $return = sp_sql_posts($tag,$where);
+        foreach ($return as $key => $value) {
+            //取得两个字符串相似的字节数
+            similar_text($value['post_title'],$trword,$paerts);
+            if($paerts < 90 || $paerts > 28){
+                $arr_similar['title'] = $value['post_title'];
+                ++$i;
+                if($i <= 5){
+                    echo $value['post_title'].'--------';
+                }
+            }
+            $fuck[] = $arr_similar;
+            
+        }
+        dump(count($fuck));
+
+    }
+
     // 文章点赞
     public function do_like(){
     	$this->check_login();

@@ -13,7 +13,7 @@
 	<div class="content-wrap">
 		<div class="content">
 			<header class="article-header">
-				<h1 class="article-title"><a href="#">{$post_title}</a></h1>
+				<h1 class="article-title">{$post_title}</h1>
 				<div class="article-meta">
 					<span class="item">{$post_modified}</span>
 					<span class="item">来源：{$post_source|default="$site_name"}</span><span class="item">分类： <a href="#" rel="category tag">{:sp_get_term($term_id)['name']}</a></span>
@@ -23,7 +23,7 @@
 			</header>
 			<article class="article-content">{$post_content}</article>
 			<div class="post-copyright">
-				转载请注明出处 洋葱技术博客：{$post_title} 
+				转载请注明出处 {$site_name}：{$post_title} 
 			</div>
 			<div class="action-share bdsharebuttonbox">
 				<span style="position:relative;bottom:6px;">分享到：</span>
@@ -47,8 +47,12 @@
 				<a class="bds_copy" data-cmd="copy"></a>
 			</div>
 			<div class="article-tags">
-				<a href="#" rel="tag" data-toggle="tooltip" data-placement="top" title="ssssss">下一篇</a>
-				<a href="#" rel="tag" data-toggle="tooltip" data-placement="top" title="撒犯得上发射点">上一篇</a>
+				<notempty name="next['post_title']">
+					<a href="{:leuu('article/index',array('id'=>$next['object_id'],'cid'=>$next['term_id']))}" rel="tag" data-toggle="tooltip" data-placement="top" title="{$next['post_title']}">下一篇</a>
+				</notempty>
+				<notempty name="prev['post_title']">
+					<a href="{:leuu('article/index',array('id'=>$prev['object_id'],'cid'=>$prev['term_id']))}" rel="tag" data-toggle="tooltip" data-placement="top" title="{$prev['post_title']}">上一篇</a>
+				</notempty>
 			</div>
 			<div class="clear" style="clear:both"></div>
 			<div class="relates">
