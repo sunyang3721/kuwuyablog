@@ -16,7 +16,7 @@
 				<h3>{$name}</h3>
 			</div>
 			<php>
-				$lists = sp_sql_posts_paged("cid:$cat_id;order:istop desc,post_date DESC;",10);
+				$lists = sp_sql_posts_paged("cid:$cat_id;order:istop desc,post_date DESC;",25);
 			</php>
 			<foreach name="lists['posts']" item="vo">
 				<php>$smeta=json_decode($vo['smeta'],true);</php>
@@ -74,9 +74,29 @@
 		{:sp_getad("ad_right_6")}
 		{:sp_getad("ad_right_7")}
 		{:sp_getad("ad_right_8")}
+		<div class="widget widget_ui_posts">
+			<h3>推荐文章</h3>
+			<ul>
+				<li><a href="#"><span class="thumbnail"><img data-src="http://www.daqianduan.com/wp-content/uploads/2016/08/MobvistaLOGO.jpg" class="thumb" src="http://www.daqianduan.com/wp-content/uploads/2016/08/MobvistaLOGO.jpg" style="display: block;"></span><span class="text">Mobvista-汇量科技招聘前端H5工程师（北京 20K+）</span><span class="muted">2016-08-22</span><span class="muted">评论()</span></a></li>
+				<li><a href="#"><span class="thumbnail"><img data-src="http://www.daqianduan.com/wp-content/uploads/2016/08/qxwzLOGO.jpg" class="thumb" src="http://www.daqianduan.com/wp-content/uploads/2016/08/qxwzLOGO.jpg" style="display: block;"></span><span class="text">阿里-千寻招聘资深前端（上海）</span><span class="muted">2016-08-22</span><span class="muted">评论()</span></a></li>
+				<li><a href="#"><span class="thumbnail"><img data-src="http://www.daqianduan.com/wp-content/uploads/2016/08/sohu_220150.png" class="thumb" src="http://www.daqianduan.com/wp-content/uploads/2016/08/sohu_220150.png" style="display: block;"></span><span class="text">搜狐社交产品中心-中级web前端开发工程师（北京 14K+）</span><span class="muted">2016-08-22</span><span class="muted">评论()</span></a></li>
+				<li><a href="#"><span class="thumbnail"><img data-src="http://www.daqianduan.com/wp-content/uploads/2016/04/zhenai.png" class="thumb" src="http://www.daqianduan.com/wp-content/uploads/2016/04/zhenai.png" style="display: block;"></span><span class="text">珍爱网诚聘高级前端开发工程师（深圳 10K+）</span><span class="muted">2016-04-20</span><span class="muted">评论()</span></a></li>
+				<li><a href="#"><span class="thumbnail"><img data-src="http://www.daqianduan.com/wp-content/uploads/2016/04/boxiaole.png" class="thumb" src="http://www.daqianduan.com/wp-content/uploads/2016/04/boxiaole.png" style="display: block;"></span><span class="text">58赶集集团招聘前端开发工程师 （北京 15K+）</span><span class="muted">2016-04-12</span><span class="muted">评论()</span></a></li>
+				<li><a href="#"><span class="thumbnail"><img data-src="http://www.daqianduan.com/wp-content/uploads/2015/09/ll.jpg" class="thumb" src="http://www.daqianduan.com/wp-content/uploads/2015/09/ll.jpg" style="display: block;"></span><span class="text">郑州珑凌科技有限公司招聘高级前端开发工程师</span><span class="muted">2016-03-25</span><span class="muted">评论()</span></a></li>
+			</ul>
+		</div>
+		<!-- 代码1：放在页面需要展示的位置  -->
+		<!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
+		<div id="cyWallsplugin" role="cylabs" data-use="wallsplugin"></div>
+		<!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
+		<!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
+		<!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
+		<!-- 如需修改默认配置，请到changyan.sohu.com后台进行配置 -->
+		<script type="text/javascript" charset="utf-8" src="http://changyan.itc.cn/js/??lib/jquery.js,changyan.labs.js?appid=cyr7zDFAB"></script>
 	</aside>
 </section>
-
+<!-- 畅言接口 -->
+<script id="cy_cmt_num" src="http://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cyr7zDFAB" />
 {:sp_getad('home_footer')}
 <tc_include file="Public:footer"/>
 <tc_include file="Public:scripts"/>

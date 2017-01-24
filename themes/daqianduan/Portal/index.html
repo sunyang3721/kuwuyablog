@@ -37,9 +37,9 @@
 				</a>
 			</div>
 			<php>}</php>
-			<article class="excerpt-see excerpt-see-index">
-				    {:sp_getad("home")}				
-			</article>
+			
+			{:sp_getad("home")}				
+
 			<div class="title">
 				<h3>最新发布</h3>
 				<ul class="more">
@@ -47,7 +47,7 @@
 				</ul>
 			</div>
 			<php>
-				$list_all=sp_sql_posts_paged("field:post_title,post_hits,post_like,post_modified,recommended,post_excerpt,object_id,smeta,term_id;order:istop desc,post_modified desc;",5); 
+				$list_all=sp_sql_posts_paged("field:post_title,post_hits,post_like,post_modified,recommended,post_excerpt,object_id,smeta,term_id;order:istop desc,post_modified desc;",25); 
 			</php>
 			<foreach name="list_all['posts']" item="vo">
 				<php>$smeta=json_decode($vo['smeta'],true);</php>
@@ -97,7 +97,7 @@
 	</div>
 	
 	<aside class="sidebar">
-		<div class="widget widget-tops affix-top" style="top: 0px;">
+		<!-- <div class="widget widget-tops affix-top" style="top: 0px;">
 			<ul class="widget-nav">
 				<li class="active">网站公告</li>
 				<li class="">会员中心</li>
@@ -118,7 +118,7 @@
 				</p>
 				</li>
 			</ul>
-		</div>
+		</div> -->
 		{:sp_getad("ad_right_1")}
 		{:sp_getad("ad_right_2")}
 		{:sp_getad("ad_right_3")}
@@ -128,7 +128,7 @@
 		{:sp_getad("ad_right_7")}
 		{:sp_getad("ad_right_8")}
 		<div class="widget widget_ui_posts">
-			<h3>热门文章</h3>
+			<h3>推荐文章</h3>
 			<ul>
 				<li><a href="#"><span class="thumbnail"><img data-src="http://www.daqianduan.com/wp-content/uploads/2016/08/MobvistaLOGO.jpg" class="thumb" src="http://www.daqianduan.com/wp-content/uploads/2016/08/MobvistaLOGO.jpg" style="display: block;"></span><span class="text">Mobvista-汇量科技招聘前端H5工程师（北京 20K+）</span><span class="muted">2016-08-22</span><span class="muted">评论()</span></a></li>
 				<li><a href="#"><span class="thumbnail"><img data-src="http://www.daqianduan.com/wp-content/uploads/2016/08/qxwzLOGO.jpg" class="thumb" src="http://www.daqianduan.com/wp-content/uploads/2016/08/qxwzLOGO.jpg" style="display: block;"></span><span class="text">阿里-千寻招聘资深前端（上海）</span><span class="muted">2016-08-22</span><span class="muted">评论()</span></a></li>
@@ -138,21 +138,14 @@
 				<li><a href="#"><span class="thumbnail"><img data-src="http://www.daqianduan.com/wp-content/uploads/2015/09/ll.jpg" class="thumb" src="http://www.daqianduan.com/wp-content/uploads/2015/09/ll.jpg" style="display: block;"></span><span class="text">郑州珑凌科技有限公司招聘高级前端开发工程师</span><span class="muted">2016-03-25</span><span class="muted">评论()</span></a></li>
 			</ul>
 		</div>
-		<div class="widget widget_ui_comments">
-			<h3>最新评论</h3>
-				<ul>
-					<li><a href="#" title="云适配获千万美金B轮融资，将开发移动端企业安全浏览器上的评论"><img alt="" data-src="http://1.gravatar.com/avatar/1dadfd2aa6b8d371320dd268678c1d29?s=50&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g" srcset="http://1.gravatar.com/avatar/1dadfd2aa6b8d371320dd268678c1d29?s=100&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g 2x" class="avatar avatar-50 photo" height="50" width="50" src="http://1.gravatar.com/avatar/1dadfd2aa6b8d371320dd268678c1d29?s=50&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g" style="display: block;"><strong>欧美大图吧</strong> 1年前 (2015-07-22)说：<br>
-					很是牛比导航啊。。</a></li>
-					<li><a href="#" title="传苹果正在开发自家的触摸显示集成技术，未来iPhone将取消Home键上的评论"><img alt="" data-src="http://0.gravatar.com/avatar/cfeada5dd78f994c22efc8cac89b8e06?s=50&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g" srcset="http://0.gravatar.com/avatar/cfeada5dd78f994c22efc8cac89b8e06?s=100&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g 2x" class="avatar avatar-50 photo" height="50" width="50" src="http://0.gravatar.com/avatar/cfeada5dd78f994c22efc8cac89b8e06?s=50&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g" style="display: block;"><strong>游客123213</strong> 1年前 (2015-07-19)说：<br>
-					好像很厉害的样子</a></li>
-					<li><a href="#" title="明年90万买个喷气背包，土豪们冲上云霄！上的评论"><img alt="" data-src="http://2.gravatar.com/avatar/2ab9246b017c75d37ebf44a483f93f23?s=50&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g" srcset="http://2.gravatar.com/avatar/2ab9246b017c75d37ebf44a483f93f23?s=100&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g 2x" class="avatar avatar-50 photo" height="50" width="50" src="http://2.gravatar.com/avatar/2ab9246b017c75d37ebf44a483f93f23?s=50&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g" style="display: block;"><strong>nickname</strong> 1年前 (2015-07-10)说：<br>
-					土豪的玩具，哈哈</a></li>
-					<li><a href="#" title="亚马逊对用户评论系统做出重大更新，引入机器学习平台上的评论"><img alt="" data-src="http://0.gravatar.com/avatar/?s=50&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g" srcset="http://0.gravatar.com/avatar/?s=100&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g 2x" class="avatar avatar-50 photo avatar-default" height="50" width="50" src="http://0.gravatar.com/avatar/?s=50&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g" style="display: block;"><strong>WordPress先生</strong> 2年前 (2015-06-26)说：<br>
-					您好，这是一条评论。
-			要删除评论，请先登录，然后再查看这篇文章的评论。登录后您可以看到编辑或者删除评论的选项。
-					</a></li>
-				</ul>
-			</div>
+		<!-- 代码1：放在页面需要展示的位置  -->
+		<!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
+		<div id="cyWallsplugin" role="cylabs" data-use="wallsplugin"></div>
+		<!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
+		<!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
+		<!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
+		<!-- 如需修改默认配置，请到changyan.sohu.com后台进行配置 -->
+		<script type="text/javascript" charset="utf-8" src="http://changyan.itc.cn/js/??lib/jquery.js,changyan.labs.js?appid=cyr7zDFAB"></script>
 		<!-- <div class="widget widget_ui_tags">
 			<h3>标签云</h3>
 			<div class="items">
@@ -193,6 +186,8 @@
 
 {:sp_getad('home_footer')}
 <tc_include file="Public:footer"/>
+<!-- 畅言接口 评论外总数-->
+<script id="cy_cmt_num" src="http://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cyr7zDFAB" />
 <tc_include file="Public:scripts"/>
 {:hook('footer_end')}
 </body>
