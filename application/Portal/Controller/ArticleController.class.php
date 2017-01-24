@@ -76,7 +76,8 @@ class ArticleController extends HomebaseController {
     	$this->assign("article_id",$article_id);
     	
         //相关关联列表
-        $relist = $this->related($article['post_title']);
+        $this->relist = $this->related($article['post_title']);
+
     	$tplname=$term["one_tpl"];
     	$tplname=empty($smeta['template'])?$tplname:$smeta['template'];
     	$tplname=sp_get_apphome_tpl($tplname, "article");
@@ -86,25 +87,29 @@ class ArticleController extends HomebaseController {
     
     //相关文章列表
     private function related($keyword){
+
         $trword = trim($keyword);
-        $tag = "field:object_id,term_id,status,post_title,listorder,post_modified,istop,post_status;order:istop DESC,listorder ASC,post_modified DESC;";
+        $tag = "field:object_id,term_id,status,post_title,listorder,post_modified,istop,post_status;order:istop DESC,listorder ASC,post_modified DESC;cache:true,43200;"; //缓存12小时
         $where['status'] = 1;
         $where['post_status'] = 1;
         $return = sp_sql_posts($tag,$where);
+        $num = 8;
         foreach ($return as $key => $value) {
             //取得两个字符串相似的字节数
             similar_text($value['post_title'],$trword,$paerts);
-            if($paerts < 90 || $paerts > 28){
-                $arr_similar['title'] = $value['post_title'];
+            if($paerts < 90 and $paerts > 28){
                 ++$i;
-                if($i <= 5){
-                    echo $value['post_title'].'--------';
+                if($i <= $num){ //最多行数
+                   $arr_similar[] = $value; //数据输出
+                }else{
+                    break;
                 }
             }
-            $fuck[] = $arr_similar;
+            
             
         }
-        dump(count($fuck));
+
+        return $arr_similar;
 
     }
 
