@@ -95,7 +95,6 @@
 			</div>
 		</div>
 	</div>
-	
 	<aside class="sidebar">
 		<!-- <div class="widget widget-tops affix-top" style="top: 0px;">
 			<ul class="widget-nav">
@@ -127,24 +126,26 @@
 		{:sp_getad("ad_right_6")}
 		{:sp_getad("ad_right_7")}
 		{:sp_getad("ad_right_8")}
+		<php>
+			$where=array('recommended'=>1,'post_status'=>1);
+			$posts=sp_sql_posts('field:post_title,post_modified,object_id,term_id,post_hits,smeta;order:listorder asc',$where);
+		</php>
 		<div class="widget widget_ui_posts">
 			<h3>推荐文章</h3>
 			<ul>
+				<foreach name="posts" item="vo">
+				<php>$smeta=json_decode($vo['smeta'],true);</php>
 				<li>
-					<a href="#">
+					<a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" title="{$vo['post_title']}">
 						<span class="thumbnail">
-							<img data-src="http://www.daqianduan.com/wp-content/uploads/2016/08/MobvistaLOGO.jpg" class="thumb" src="http://www.daqianduan.com/wp-content/uploads/2016/08/MobvistaLOGO.jpg" style="display: block;">
+							<img data-src="{:sp_get_asset_upload_path($smeta['thumb'])}" class="thumb" src="{:sp_get_asset_upload_path($smeta['thumb'])}" style="display: block;" />
 						</span>
-						<span class="text">Mobvista-汇量科技招聘前端H5工程师（北京 20K+）</span>
-						<span class="muted">2016-08-22</span>
-						<span class="muted">评论()</span>
+						<span class="text" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{$vo['post_title']}</span>
+						<span class="muted">{$vo['post_modified']}</span><br/>
+						<span class="muted">阅读({$vo['post_hits']})</span>
 					</a>
 				</li>
-				<li><a href="#"><span class="thumbnail"><img data-src="http://www.daqianduan.com/wp-content/uploads/2016/08/qxwzLOGO.jpg" class="thumb" src="http://www.daqianduan.com/wp-content/uploads/2016/08/qxwzLOGO.jpg" style="display: block;"></span><span class="text">阿里-千寻招聘资深前端（上海）</span><span class="muted">2016-08-22</span><span class="muted">评论()</span></a></li>
-				<li><a href="#"><span class="thumbnail"><img data-src="http://www.daqianduan.com/wp-content/uploads/2016/08/sohu_220150.png" class="thumb" src="http://www.daqianduan.com/wp-content/uploads/2016/08/sohu_220150.png" style="display: block;"></span><span class="text">搜狐社交产品中心-中级web前端开发工程师（北京 14K+）</span><span class="muted">2016-08-22</span><span class="muted">评论()</span></a></li>
-				<li><a href="#"><span class="thumbnail"><img data-src="http://www.daqianduan.com/wp-content/uploads/2016/04/zhenai.png" class="thumb" src="http://www.daqianduan.com/wp-content/uploads/2016/04/zhenai.png" style="display: block;"></span><span class="text">珍爱网诚聘高级前端开发工程师（深圳 10K+）</span><span class="muted">2016-04-20</span><span class="muted">评论()</span></a></li>
-				<li><a href="#"><span class="thumbnail"><img data-src="http://www.daqianduan.com/wp-content/uploads/2016/04/boxiaole.png" class="thumb" src="http://www.daqianduan.com/wp-content/uploads/2016/04/boxiaole.png" style="display: block;"></span><span class="text">58赶集集团招聘前端开发工程师 （北京 15K+）</span><span class="muted">2016-04-12</span><span class="muted">评论()</span></a></li>
-				<li><a href="#"><span class="thumbnail"><img data-src="http://www.daqianduan.com/wp-content/uploads/2015/09/ll.jpg" class="thumb" src="http://www.daqianduan.com/wp-content/uploads/2015/09/ll.jpg" style="display: block;"></span><span class="text">郑州珑凌科技有限公司招聘高级前端开发工程师</span><span class="muted">2016-03-25</span><span class="muted">评论()</span></a></li>
+				</foreach>
 			</ul>
 		</div>
 		<!-- 代码1：放在页面需要展示的位置  -->
@@ -192,12 +193,11 @@
 		</div> -->
 	</aside>
 </section>
-
 {:sp_getad('home_footer')}
 <tc_include file="Public:footer" />
 <tc_include file="Public:scripts" />
 {:hook('footer_end')}
-</body>
 <!-- 畅言接口 -->
 <script id="cy_cmt_num" src="http://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cyr7zDFAB" />
+</body>
 </html>
