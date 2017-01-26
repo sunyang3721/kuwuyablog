@@ -2191,7 +2191,7 @@ body.sign-show {
 .plinks h2{border-bottom:solid 1px #eee;font-size: 20px;padding-bottom: 5px;}
 .plinks ul{clear: both;overflow: hidden;}
 .plinks ul li{width:20%;float:left;}
-.plinks ul li a{display:block;padding:8px 10px;overflow:hidden;border: 1px solid #eaeaea;margin: 10px 10px 0 0;}
+.plinks ul li a{display:block;padding:8px 10px;overflow:hidden;border: 1px solid #eaeaea;margin: 10px 10px 0 0;text-align: center;}
 .plinks ul li img{float: left;width: 16px;height: 16px;margin-right: 8px;margin-top: 2px;}
 .plinks ul li a:hover{border-color: #45B6F7;}
 

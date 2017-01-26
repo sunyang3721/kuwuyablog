@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{$site_seo_title} {$site_name}</title>
+	<meta name="keywords" content="{$site_seo_keywords}" />
+	<meta name="description" content="{$site_seo_description}">
+	<tc_include file="Public:head" />
+</head>
+<body>
+<tc_include file="Public:nav" />
+
+<div class="container container-page" style="padding-left:0px">
+	<div class="content">
+		<ul class="plinks">
+			<li id="linkcat-42" class="linkcat">
+			<h2>友情链接 <small>(不分排名前后)</small></h2>
+			<php>
+			    $links=sp_getlinks();
+			</php>
+			<ul class="xoxo blogroll">
+				<foreach name="links" item="vo">
+					<li>
+					    <a href="{$vo.link_url}" title="{$vo.link_description}" target="{$vo.link_target}">
+					        <notempty name="vo.link_image">
+					                <img src="{:sp_get_image_url($vo['link_image'])}"><!-- 链接图片 -->
+					        </notempty>
+					        {$vo.link_name}
+					    </a>
+				    </li>
+				</foreach>
+			</ul>
+			</li>
+		</ul>
+	</div>
+</div>
+{:sp_getad('home_footer')}
+<tc_include file="Public:footer"/>
+<tc_include file="Public:scripts"/>
+{:hook('footer_end')}
+</body>
+</html>

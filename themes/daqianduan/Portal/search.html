@@ -8,80 +8,79 @@
 	</head>
 <body class="">
 <tc_include file="Public:nav" />
-<div class="container tc-main">
-	<div class="row">
-		<div class="span9">
-			<div class="main-title">
+
+<section class="container">
+	<div class="content-wrap">
+		<div class="content">
+			<div class="title">
 				<php>
 					$result=sp_sql_posts_paged_bykeyword($keyword,"",20);
 				</php>
-				<h3>'{$keyword}' 搜索结果 </h3>
-				<p>{$result['count']}条结果</p>
+				<h3>搜索 '{$keyword}' 结果共{$result['count']}条</h3>
 			</div>
 			
 			<volist name="result['posts']" id="vo">
-			<php>
-				$smeta=json_decode($vo['smeta'], true);
-			</php>
-			
-			<div class="list-boxes">
-				<h2><a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">{$vo.post_title}</a></h2>
-				<p>{$vo.post_excerpt}</p>
-				<div>
-					<div class="pull-left">
-						<div class="list-actions">
-						<a href="javascript:;"><i class="fa fa-eye"></i><span>{$vo.post_hits}</span></a>
-						<a href="{:U('article/do_like',array('id'=>$vo['object_id']))}" class="js-count-btn"><i class="fa fa-thumbs-up"></i><span class="count">{$vo.post_like}</span></a>
-						<a href="{:U('user/favorite/do_favorite',array('id'=>$vo['object_id']))}" class="js-favorite-btn" data-title="{$vo.post_title}" data-url="{:U('portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" data-key="{:sp_get_favorite_key('posts',$vo['object_id'])}">
-							<i class="fa fa-star-o"></i>
+				<php>$smeta=json_decode($vo['smeta'],true);</php>
+				<if condition="empty($smeta['thumb'])"> 
+					<article class="excerpt excerpt-1 excerpt-text">
+						<header>
+							<a class="cat" href="{:leuu('list/index',array('id'=>$vo['term_id']))}">{:sp_get_term($vo['term_id'])['name']}<i></i></a> 
+							<h2>
+								<a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" title="{$vo['post_title']}"><eq name="vo['recommended']" value="1"><b class="red">[推荐]</b></eq>{:str_replace($_GET['keyword'],'<b style="color:#ff0023;">'.$_GET['keyword'].'</b>',$vo['post_title'])}</a>
+							</h2>
+						</header>
+						<p class="meta">
+							<time><i class="fa fa-clock-o"></i>{$vo['post_modified']|strtotime|date='Y-m-d',###}</time>
+							<span class="pc"><i class="fa fa-eye"></i>阅读({$vo['post_hits']})</span>
+							<span class="pv"><i class="fa fa-comments-o"></i>评论({:changyan_num($vo['object_id'])})</span>
+						</p>
+						<p class="note">{:msubstr($vo['post_excerpt'],0,200)}</p>
+					</article>
+				<else /> 
+					<article class="excerpt excerpt-1">
+						<a class="focus" href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">
+							<img data-src="{:sp_get_asset_upload_path($smeta['thumb'])}" class="thumb"/>
 						</a>
-						</div>
-					</div>
-					<a class="btn btn-warning pull-right" href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">查看更多</a>
-				</div>
-			</div>
+						<header>
+							<a class="cat" href="{:leuu('list/index',array('id'=>$vo['term_id']))}">{:sp_get_term($vo['term_id'])['name']}<i></i></a> 
+							<h2>
+								<a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" title="{$vo['post_title']}"><eq name="vo['recommended']" value="1"><b class="red">[推荐]</b></eq> {:str_replace($_GET['keyword'],'<b style="color:#ff0023;">'.$_GET['keyword'].'</b>',$vo['post_title'])}</a>
+							</h2>
+						</header>
+						<p class="meta">
+							<time><i class="fa fa-clock-o"></i>{$vo['post_modified']|strtotime|date='Y-m-d',###}</time>
+							<span class="pc"><i class="fa fa-eye"></i>阅读({$vo['post_hits']})</span>
+							<span class="pv"><i class="fa fa-comments-o"></i>评论({:changyan_num($vo['object_id'])})</span>
+						</p>
+						<p class="note">{:msubstr($vo['post_excerpt'],0,200)}</p>
+					</article>
+				</if>
+				
 			</volist>
-		
-			<div class="pagination">
-					<ul>
-						{$result['page']}
-					</ul>
+			
+			<div class="pagination excerpt-1">
+				<ul>
+					{$result['page']}
+				</ul>
 			</div>
-
 		</div>
-		<div class="span3">
-			<div class="tc-box first-box">
-				<div class="headtitle">
-	          		<h2>分享</h2>
-	          	</div>
-	          	<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a></div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"32"},"share":{},"image":{"viewList":["weixin","tsina","qzone","tqq","renren"],"viewText":"分享到：","viewSize":"32"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["weixin","tsina","qzone","tqq","renren"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-        	</div>
-        	
-        	<div class="tc-box">
-	        	<div class="headtitle">
-	        		<h2>热门文章</h2>
-	        	</div>
-	        	<div class="ranking">
-	        		<php>
-						$hot_articles=sp_sql_posts("cid:$portal_index_lastnews;field:post_title,post_excerpt,object_id,term_id,smeta;order:post_hits desc;limit:5;"); 
-					</php>
-		        	<ul class="unstyled">
-		        		<foreach name="hot_articles" item="vo">
-		        			<php>$top=$key<3?"top3":"";</php>
-							<li class="{$top}"><i>{$key+1}</i><a title="{$vo.post_title}" href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">{$vo.post_title}</a></li>
-						</foreach>
-					</ul>
-				</div>
-			</div>
-        	
-		</div>
-		
 	</div>
-              
-<tc_include file="Public:footer"/>
-</div>
 
+	<aside class="sidebar">
+		{:sp_getad("ad_right_1")}
+		{:sp_getad("ad_right_2")}
+		{:sp_getad("ad_right_3")}
+		{:sp_getad("ad_right_4")}
+		{:sp_getad("ad_right_5")}
+		{:sp_getad("ad_right_6")}
+		{:sp_getad("ad_right_7")}
+		{:sp_getad("ad_right_8")}
+		<tc_include file="Public:right"/>
+	</aside>
+</section>
+{:sp_getad('home_footer')}
+<tc_include file="Public:footer"/>
 <tc_include file="Public:scripts"/>
+{:hook('footer_end')}
 </body>
 </html>
