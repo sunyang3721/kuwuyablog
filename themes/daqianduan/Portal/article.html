@@ -15,9 +15,9 @@
 			<header class="article-header">
 				<h1 class="article-title">{$post_title}</h1>
 				<div class="article-meta">
-					<span class="item">{$post_modified}</span>
+					<span class="item">{$post_modified|strtotime|date='Y-m-d',###}</span>
 					<span class="item">来源：{$post_source|default="$site_name"}</span><span class="item">分类： <a href="#" rel="category tag">{:sp_get_term($term_id)['name']}</a></span>
-					<span class="item post-views">阅读({$post_hits})</span><!-- <span class="item">评论(xxx)</span> -->
+					<span class="item post-views">阅读({$post_hits})</span><span class="item">评论({:changyan_num($id)})</span>
 					<span class="item"></span>
 				</div>
 			</header>
@@ -94,52 +94,7 @@
 		{:sp_getad("ad_right_6")}
 		{:sp_getad("ad_right_7")}
 		{:sp_getad("ad_right_8")}
-		<php>
-			$where=array('recommended'=>1,'post_status'=>1);
-			$posts=sp_sql_posts('field:post_title,post_modified,object_id,term_id,post_hits,smeta;order:listorder asc',$where);
-		</php>
-		<div class="widget widget_ui_posts">
-			<h3>推荐文章</h3>
-			<ul>
-				<foreach name="posts" item="vo">
-				<php>$smeta=json_decode($vo['smeta'],true);</php>
-				<li>
-					<a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" title="{$vo['post_title']}">
-						<span class="thumbnail">
-							<img data-src="{:sp_get_asset_upload_path($smeta['thumb'])}" class="thumb" src="{:sp_get_asset_upload_path($smeta['thumb'])}" style="display: block;" />
-						</span>
-						<span class="text" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{$vo['post_title']}</span>
-						<span class="muted">{$vo['post_modified']}</span><br/>
-						<span class="muted">阅读({$vo['post_hits']})</span>
-					</a>
-				</li>
-				</foreach>
-			</ul>
-		</div>
-		<!-- 代码1：放在页面需要展示的位置  -->
-		<!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
-		<div id="cyWallsplugin" role="cylabs" data-use="wallsplugin"></div>
-		<!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
-		<!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
-		<!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
-		<!-- 如需修改默认配置，请到changyan.sohu.com后台进行配置 -->
-		<script type="text/javascript" charset="utf-8" src="http://changyan.itc.cn/js/??lib/jquery.js,changyan.labs.js?appid=cyr7zDFAB"></script>
-		<!--
-		<div class="widget widget_ui_comments">
-			<h3>热门评论</h3>
-				<ul>
-					<li><a href="#" title="云适配获千万美金B轮融资，将开发移动端企业安全浏览器上的评论"><img alt="" data-src="http://1.gravatar.com/avatar/1dadfd2aa6b8d371320dd268678c1d29?s=50&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g" srcset="http://1.gravatar.com/avatar/1dadfd2aa6b8d371320dd268678c1d29?s=100&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g 2x" class="avatar avatar-50 photo" height="50" width="50" src="http://1.gravatar.com/avatar/1dadfd2aa6b8d371320dd268678c1d29?s=50&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g" style="display: block;"><strong>欧美大图吧</strong> 1年前 (2015-07-22)说：<br>
-					很是牛比导航啊。。</a></li>
-					<li><a href="#" title="传苹果正在开发自家的触摸显示集成技术，未来iPhone将取消Home键上的评论"><img alt="" data-src="http://0.gravatar.com/avatar/cfeada5dd78f994c22efc8cac89b8e06?s=50&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g" srcset="http://0.gravatar.com/avatar/cfeada5dd78f994c22efc8cac89b8e06?s=100&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g 2x" class="avatar avatar-50 photo" height="50" width="50" src="http://0.gravatar.com/avatar/cfeada5dd78f994c22efc8cac89b8e06?s=50&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g" style="display: block;"><strong>游客123213</strong> 1年前 (2015-07-19)说：<br>
-					好像很厉害的样子</a></li>
-					<li><a href="#" title="明年90万买个喷气背包，土豪们冲上云霄！上的评论"><img alt="" data-src="http://2.gravatar.com/avatar/2ab9246b017c75d37ebf44a483f93f23?s=50&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g" srcset="http://2.gravatar.com/avatar/2ab9246b017c75d37ebf44a483f93f23?s=100&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g 2x" class="avatar avatar-50 photo" height="50" width="50" src="http://2.gravatar.com/avatar/2ab9246b017c75d37ebf44a483f93f23?s=50&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g" style="display: block;"><strong>nickname</strong> 1年前 (2015-07-10)说：<br>
-					土豪的玩具，哈哈</a></li>
-					<li><a href="#" title="亚马逊对用户评论系统做出重大更新，引入机器学习平台上的评论"><img alt="" data-src="http://0.gravatar.com/avatar/?s=50&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g" srcset="http://0.gravatar.com/avatar/?s=100&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g 2x" class="avatar avatar-50 photo avatar-default" height="50" width="50" src="http://0.gravatar.com/avatar/?s=50&amp;d=http%3A%2F%2Fdemo.themebetter.com%2Fdux%2Fwp-content%2Fthemes%2Fdux%2Fimg%2Favatar-default.png&amp;r=g" style="display: block;"><strong>WordPress先生</strong> 2年前 (2015-06-26)说：<br>
-					您好，这是一条评论。
-			要删除评论，请先登录，然后再查看这篇文章的评论。登录后您可以看到编辑或者删除评论的选项。
-					</a></li>
-			</ul>
-		</div> -->
+		<tc_include file="Public:right"/>
 	</aside>
 </section>
 

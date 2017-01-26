@@ -60,9 +60,9 @@
 							</h2>
 						</header>
 						<p class="meta">
-							<time><i class="fa fa-clock-o"></i>{$vo['post_modified']}</time>
-							<span class="pv"><i class="fa fa-eye"></i>阅读({$vo['post_hits']})</span>
-							<span class="pc"><i class="fa fa-comments-o"></i>评论(<span id = "sourceId::{$vo['object_id']}" class = "cy_cmt_count" ></span>)</span>
+							<time><i class="fa fa-clock-o"></i>{$vo['post_modified']|strtotime|date='Y-m-d',###}</time>
+							<span class="pc"><i class="fa fa-eye"></i>阅读({$vo['post_hits']})</span>
+							<span class="pv"><i class="fa fa-comments-o"></i>评论({:changyan_num($vo['object_id'])})</span>
 						</p>
 						<p class="note">{:msubstr($vo['post_excerpt'],0,200)}</p>
 					</article>
@@ -78,9 +78,9 @@
 							</h2>
 						</header>
 						<p class="meta">
-							<time><i class="fa fa-clock-o"></i>{$vo['post_modified']}</time>
-							<span class="pv"><i class="fa fa-eye"></i>阅读({$vo['post_hits']})</span>
-							<span class="pc"><i class="fa fa-comments-o"></i>评论(<span id = "sourceId::{$vo['object_id']}" class = "cy_cmt_count" ></span>)</span>
+							<time><i class="fa fa-clock-o"></i>{$vo['post_modified']|strtotime|date='Y-m-d',###}</time>
+							<span class="pc"><i class="fa fa-eye"></i>阅读({$vo['post_hits']})</span>
+							<span class="pv"><i class="fa fa-comments-o"></i>评论({:changyan_num($vo['object_id'])})</span>
 						</p>
 						<p class="note">{:msubstr($vo['post_excerpt'],0,200)}</p>
 					</article>
@@ -126,71 +126,7 @@
 		{:sp_getad("ad_right_6")}
 		{:sp_getad("ad_right_7")}
 		{:sp_getad("ad_right_8")}
-		<php>
-			$where=array('recommended'=>1,'post_status'=>1);
-			$posts=sp_sql_posts('field:post_title,post_modified,object_id,term_id,post_hits,smeta;order:listorder asc',$where);
-		</php>
-		<div class="widget widget_ui_posts">
-			<h3>推荐文章</h3>
-			<ul>
-				<foreach name="posts" item="vo">
-				<php>$smeta=json_decode($vo['smeta'],true);</php>
-				<li>
-					<a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" title="{$vo['post_title']}">
-						<span class="thumbnail">
-							<img data-src="{:sp_get_asset_upload_path($smeta['thumb'])}" class="thumb" src="{:sp_get_asset_upload_path($smeta['thumb'])}" style="display: block;" />
-						</span>
-						<span class="text" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{$vo['post_title']}</span>
-						<span class="muted">{$vo['post_modified']}</span><br/>
-						<span class="muted">阅读({$vo['post_hits']})</span>
-					</a>
-				</li>
-				</foreach>
-			</ul>
-		</div>
-		<!-- 代码1：放在页面需要展示的位置  -->
-		<!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
-		<div id="cyWallsplugin" role="cylabs" data-use="wallsplugin"></div>
-		<!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
-		<!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
-		<!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
-		<!-- 如需修改默认配置，请到changyan.sohu.com后台进行配置 -->
-		<script type="text/javascript" charset="utf-8" src="http://changyan.itc.cn/js/??lib/jquery.js,changyan.labs.js?appid=cyr7zDFAB"></script>
-		<!-- <div class="widget widget_ui_tags">
-			<h3>标签云</h3>
-			<div class="items">
-				<a href="http://www.daqianduan.com/tag/front-skills">前端技巧 (61)</a>
-				<a href="http://www.daqianduan.com/tag/css">CSS (52)</a>
-				<a href="http://www.daqianduan.com/tag/javascript">JavaScript (50)</a>
-				<a href="http://www.daqianduan.com/tag/user-experience">用户体验 (46)</a>
-				<a href="http://www.daqianduan.com/tag/design-ideas">设计思路 (43)</a>
-				<a href="http://www.daqianduan.com/tag/html5">HTML5 (40)</a>
-				<a href="http://www.daqianduan.com/tag/seo">SEO (40)</a>
-				<a href="http://www.daqianduan.com/tag/website-design">网页设计 (40)</a>
-				<a href="http://www.daqianduan.com/tag/css3">CSS3 (37)</a>
-				<a href="http://www.daqianduan.com/tag/professional">职业 (34)</a>
-				<a href="http://www.daqianduan.com/tag/front-resources">前端资源 (33)</a>
-				<a href="http://www.daqianduan.com/tag/daqianduan">大前端 (31)</a>
-				<a href="http://www.daqianduan.com/tag/company">企业公司 (30)</a>
-				<a href="http://www.daqianduan.com/tag/browser">浏览器 (28)</a>
-				<a href="http://www.daqianduan.com/tag/adsense-necessary">站长必备 (27)</a>
-				<a href="http://www.daqianduan.com/tag/jquery">jQuery (22)</a>
-				<a href="http://www.daqianduan.com/tag/search-optimization">搜索引擎优化 (22)</a>
-				<a href="http://www.daqianduan.com/tag/web-development">web开发 (17)</a>
-				<a href="http://www.daqianduan.com/tag/compatible">兼容 (17)</a>
-				<a href="http://www.daqianduan.com/tag/html">HTML (16)</a>
-				<a href="http://www.daqianduan.com/tag/web-standards">web标准 (16)</a>
-				<a href="http://www.daqianduan.com/tag/google">Google (15)</a>
-				<a href="http://www.daqianduan.com/tag/ie9">IE9 (15)</a>
-				<a href="http://www.daqianduan.com/tag/front-tools">前端工具 (15)</a>
-				<a href="http://www.daqianduan.com/tag/haozi">浩子 (15)</a>
-				<a href="http://www.daqianduan.com/tag/ie6">IE6 (12)</a>
-				<a href="http://www.daqianduan.com/tag/announcement">网站公告 (12)</a>
-				<a href="http://www.daqianduan.com/tag/wordpress">wordpress (11)</a>
-				<a href="http://www.daqianduan.com/tag/css3-explain">CSS3详解 (11)</a>
-				<a href="http://www.daqianduan.com/tag/search-engine">搜索引擎 (10)</a>
-			</div>
-		</div> -->
+		<tc_include file="Public:right"/>
 	</aside>
 </section>
 {:sp_getad('home_footer')}
