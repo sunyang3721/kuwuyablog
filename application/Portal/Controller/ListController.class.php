@@ -15,7 +15,6 @@ class ListController extends HomebaseController {
 	public function index() {
 	    $term_id=I('get.id',0,'intval');
 		$term=sp_get_term($term_id);
-		
 		if(empty($term)){
 		    header('HTTP/1.1 404 Not Found');
 		    header('Status:404 Not Found');
@@ -24,11 +23,21 @@ class ListController extends HomebaseController {
 		    }
 		    return;
 		}
-		
+
+		if($term['parent'] == 0){
+			$where['parent'] = $term_id;
+			$terms = sp_get_terms('field:term_id',$where);
+			foreach ($terms as $key => $value) {
+				$terms_id[] = $value['term_id'];
+			}
+			$cat_id = implode(',',$terms_id);
+			$this->assign('cat_id', $cat_id);
+		}else{
+			$this->assign($term);
+			$this->assign('cat_id', $term_id);
+		}
 		$tplname=$term["list_tpl"];
     	$tplname=sp_get_apphome_tpl($tplname, "list");
-    	$this->assign($term);
-    	$this->assign('cat_id', $term_id);
     	$this->display(":$tplname");
 	}
 	
