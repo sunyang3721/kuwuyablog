@@ -296,15 +296,15 @@ class Page {
                 $this->pFirst = $this->linkwraper_pre.'<a href="' . str_replace('*', 1, $cfg ['link']) . '">' . $cfg ['first'] . '</a> '.$this->linkwraper_after; //首页
             }
             if ($this->Static && ($cfg ['pageindex'] - 1) == 1) {
-                $this->pPrev = $this->linkwraper_pre.'<a href="' . $this->PageLink['index'] . '">' . $cfg ['prev'] . '</a> '.$this->linkwraper_after; //上一页
+                $this->pPrev ='<li class="prev-page"><a href="' . $this->PageLink['index'] . '">' . $cfg ['prev'] . '</a> '.$this->linkwraper_after; //上一页
             } else {
-                $this->pPrev = $this->linkwraper_pre.'<a href="' . str_replace('*', $cfg ['pageindex'] - 1, $cfg ['link']) . '">' . $cfg ['prev'] . '</a> '.$this->linkwraper_after;
+                $this->pPrev ='<li class="prev-page"><a href="' . str_replace('*', $cfg ['pageindex'] - 1, $cfg ['link']) . '">' . $cfg ['prev'] . '</a> '.$this->linkwraper_after;
             }
         }
         //下一页，尾页
         if ($cfg ['pageindex'] < $cfg ['pagecount']) {
-            $this->pLast = $this->linkwraper_pre.'<a href="' . str_replace('*', $cfg ['pagecount'], $cfg ['link']) . '">' . $cfg ['last'] . '</a> '.$this->linkwraper_after;
-            $this->pNext = $this->linkwraper_pre.'<a href="' . str_replace('*', $cfg ['pageindex'] + 1, $cfg ['link']) . '">' . $cfg ['next'] . '</a> '.$this->linkwraper_after;
+            $this->pLast = '<li class="next-page"><a href="' . str_replace('*', $cfg ['pagecount'], $cfg ['link']) . '">' . $cfg ['last'] . '</a> '.$this->linkwraper_after;
+            $this->pNext = '<li class="next-page"><a href="' . str_replace('*', $cfg ['pageindex'] + 1, $cfg ['link']) . '">' . $cfg ['next'] . '</a> '.$this->linkwraper_after;
         }
 
         //快捷跳转方式
@@ -347,6 +347,7 @@ class Page {
         $replace = array($cfg ['recordcount'], $cfg ['pagecount'], $cfg ['pageindex'], $cfg ['pagesize'], $this->pList, $this->pListStart, $this->pListEnd, $this->pFirst, $this->pPrev, $this->pNext, $this->pLast, $pJump);
         $tmpStr = chr(13) . chr(10) . preg_replace($patterns, $replace, $tmpStr) . chr(13) . chr(10);
         unset($cfg);
+        //dump($tmpStr);
         return $tmpStr;
     }
 

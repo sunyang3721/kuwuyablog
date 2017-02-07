@@ -32,6 +32,9 @@ class ListController extends HomebaseController {
 			}
 			$cat_id = implode(',',$terms_id);
 			$this->assign('cat_id', $cat_id);
+
+			//针对移动端响应式  分类id对应子分类显示
+			$this->child_term = sp_get_child_terms($term_id);
 		}else{
 			$this->assign($term);
 			$this->assign('cat_id', $term_id);

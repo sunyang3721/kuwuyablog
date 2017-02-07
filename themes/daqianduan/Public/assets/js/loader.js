@@ -69,7 +69,32 @@ require(['jquery'], function (){
 					$('.site-search').addClass('active').css('top','105px');
 			}
 		})
+	//代码高亮
 	$("pre").addClass("prettyprint linenums");
+	//移动端 菜单click
+	$('.m-icon-nav').click(function(){
+		$('.site-navbar,.m-mask').fadeIn();
+		$('.s-icon-nav').removeClass('icon-nav-hover');
+		$('.site-search').removeClass('soso_down');
+		$('.m-icon-nav').addClass('icon-nav-hover');
+		nav_close();
+	});
+	//移动端搜索
+	$('.s-icon-nav').click(function(){
+		$('.site-navbar').fadeOut();
+		$('.m-icon-nav').removeClass('icon-nav-hover');
+		$('.s-icon-nav').addClass('icon-nav-hover');
+		$('.site-search').addClass('soso_down');
+		$('.m-mask').fadeIn();
+		nav_close();
+	});
+	function nav_close(){
+		$('.m-mask').click(function(){
+			$('.site-navbar,.m-mask').hide();
+			$('.site-search').removeClass('soso_down');
+			$('.s-icon-nav,.m-icon-nav').removeClass('icon-nav-hover');
+		})
+	}
 	// require(['cookie'],function(){
 	// 	$.cookie('name',null);
 	// 	$.cookie('ssss',null);

@@ -74,7 +74,7 @@ class ApiService {
     	    ->limit($limit)
     	    ->select();
     	}else{
-    	    $pagetpl = empty($pagetpl) ? '{first}{prev}{liststart}{list}{listend}{next}{last}' : $pagetpl;
+    	    $pagetpl = empty($pagetpl) ? '{prev}{liststart}{list}{listend}{next}' : $pagetpl;
     	    $totalsize=$term_relationships_model
     	    ->alias("term_relationships")
     	    ->join($join)

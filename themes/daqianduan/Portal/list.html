@@ -12,11 +12,17 @@
 <section class="container">
 	<div class="content-wrap">
 		<div class="content">
+			<ul class="child_tab">
+				<foreach name="child_term" item="vo">
+				<a href="{:leuu('list/index',array('id'=>$vo['term_id']))}"><li>{$vo['name']}</li></a>
+				</foreach>
+				<div style="clear:both"></div>
+			</ul>
 			<div class="title">
 				<h3>{$name}</h3>
 			</div>
 			<php>
-				$lists = sp_sql_posts_paged("cid:$cat_id;order:istop desc,post_date DESC;",25);
+				$lists = sp_sql_posts_paged("cid:$cat_id;order:istop desc,post_date DESC;",2);
 			</php>
 			<foreach name="lists['posts']" item="vo">
 				<php>$smeta=json_decode($vo['smeta'],true);</php>
