@@ -2302,7 +2302,7 @@ pre.prettyprint.linenums ol li {
 /*移动端响应式 分类ID 对应显示子分类所有 sunyang*/
 .child_tab{width:100%;}
 .child_tab li{width:48%;float: left;text-align: center;padding:12px 0px;margin:5px;border:1px solid #ddd;background-color:#fff;}
-.child_tab li:hover{background-color:#f6f6f6;}
+.child_tab li:hover{background-color:#FBFBFB;}
 /*移动端响应式 搜索*/
 .soso_down{position:fixed;top:42px!important;z-index: 200;}
 /*  ======================================================================================================== */
