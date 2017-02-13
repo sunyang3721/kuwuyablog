@@ -2374,6 +2374,8 @@ pre.prettyprint.linenums ol li {
 	.pagetitle h1{font-size: 16px;font-weight: bold;}
 
 	.excerpt{padding: 10px 10px 10px 180px;}
+	/*移动 没有缩略图时 执行*/
+	.excerpt-text{padding-left: 20px;}
 	.excerpt .focus{width: 160px;margin-left: -170px;}
 	.excerpt .thumb{width: 160px;height: 109px;}
 	.excerpt .note{display: none;}
@@ -2468,6 +2470,8 @@ pre.prettyprint.linenums ol li {
 	.cat-posts li:nth-child(3){border-left: 1px solid #eaeaea;border-radius: 0 0 0 4px;}
 	
 	.excerpt{padding: 10px 10px 10px 120px;}
+	/*移动 没有缩略图时 执行*/
+	.excerpt-text{padding-left: 20px;}
 	.excerpt .focus{width: 100px;margin-left: -110px;}
 	.excerpt .thumb{width: 100px;height: 68px;}
 	.excerpt .note{display: none;}
