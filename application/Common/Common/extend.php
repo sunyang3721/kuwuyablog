@@ -613,8 +613,8 @@ function auto_charset($fContents, $from='gbk', $to='utf-8') {
 }
 
 // 畅言接口 评论总数输出
-function changyan_num($topic_id){
-	$url = 'http://changyan.sohu.com/api/2/topic/count?client_id=cyr7zDFAB&topic_id='.$topic_id;
-	$return = json_decode(file_get_contents($url));
-	return $return->result->$topic_id->comments;
-}
+// function changyan_num($topic_id){
+// 	$url = 'http://changyan.sohu.com/api/2/topic/count?client_id=cyr7zDFAB&topic_id='.$topic_id;
+// 	$return = json_decode(file_get_contents($url));
+// 	return $return->result->$topic_id->comments;
+// }
