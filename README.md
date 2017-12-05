@@ -1,1 +1,1 @@
-## 为你开放更多 示例网址 www.kuwuya.com
+## 利用thinkcmf2.0效仿大前端 示例网址 www.kuwuya.com
